@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,15 +10,21 @@ CONFIG += c++11
 
 SOURCES += \
     about.cpp \
+    createcolumnform.cpp \
+    inputdbsettingswindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     about.h \
+    createcolumnform.h \
+    inputdbsettingswindow.h \
     mainwindow.h
 
 FORMS += \
     about.ui \
+    createcolumnform.ui \
+    inputdbsettingswindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

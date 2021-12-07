@@ -35,6 +35,7 @@ public:
         labelFullName->setGeometry(QRect(130, 20, 241, 71));
         QFont font;
         font.setPointSize(18);
+        font.setBold(false);
         labelFullName->setFont(font);
         labelFullName->setAlignment(Qt::AlignCenter);
         labelPicture = new QLabel(about);

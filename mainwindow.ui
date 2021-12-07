@@ -40,10 +40,10 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="addRowButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>490</x>
       <y>20</y>
       <width>151</width>
       <height>51</height>
@@ -53,11 +53,11 @@
      <string>Add Row</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="deleteRowButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>90</y>
+      <x>490</x>
+      <y>80</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -66,7 +66,7 @@
      <string>Delete Row</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="submitButton">
     <property name="geometry">
      <rect>
       <x>560</x>
@@ -77,6 +77,65 @@
     </property>
     <property name="text">
      <string>Submit</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>280</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="executeQueryButton">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>480</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Execute</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="queryArea">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>360</y>
+      <width>251</width>
+      <height>101</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addColumnButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>20</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Column</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="deleteColumnButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>80</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete Column</string>
     </property>
    </widget>
   </widget>
@@ -113,6 +172,20 @@
    <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCleanWorkArea"/>
+   <addaction name="actionCleanInputField"/>
+   <addaction name="actionCleanOutput"/>
+  </widget>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
@@ -131,6 +204,42 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionCleanWorkArea">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Downloads/application_delete.png</normaloff>../../Downloads/application_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>CleanWorkArea</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+W</string>
+   </property>
+  </action>
+  <action name="actionCleanInputField">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Downloads/textfield_delete.png</normaloff>../../Downloads/textfield_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>CleanInputField</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+T</string>
+   </property>
+  </action>
+  <action name="actionCleanOutput">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Downloads/table_delete.png</normaloff>../../Downloads/table_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>CleanOutput</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+V</string>
    </property>
   </action>
  </widget>
