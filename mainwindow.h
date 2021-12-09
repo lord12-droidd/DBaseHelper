@@ -8,6 +8,8 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlTableModel>
 #include "about.h"
+#include "createcolumnform.h"
+#include "createtablewindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,9 +47,13 @@ private slots:
 
     void on_deleteColumnButton_clicked();
 
+    void on_actionNew_table_triggered();
+
 private:
     Ui::MainWindow *ui;
     about *aboutWindow;
+    CreateTableWindow *createTableWindow;
+    CreateColumnForm *createColumnWindow;
     QSqlDatabase db;
     QSqlTableModel* model;
 };

@@ -19,6 +19,7 @@ InputDBSettingsWindow::~InputDBSettingsWindow()
 }
 void InputDBSettingsWindow::on_submitConnectionSettingsBtn_clicked()
 {
+    db.setConnectOptions("connect_timeout=5");
     db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName(ui->hostNameLine->text());
     db.setDatabaseName(ui->dbLine->text());

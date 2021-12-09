@@ -158,7 +158,13 @@
     <property name="title">
      <string>Process</string>
     </property>
-    <addaction name="actionCreate"/>
+    <widget class="QMenu" name="menuCreate">
+     <property name="title">
+      <string>Create</string>
+     </property>
+     <addaction name="actionNew_table"/>
+    </widget>
+    <addaction name="menuCreate"/>
    </widget>
    <widget class="QMenu" name="menuInfo">
     <property name="title">
@@ -189,11 +195,6 @@
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
-   </property>
-  </action>
-  <action name="actionCreate">
-   <property name="text">
-    <string>Create</string>
    </property>
   </action>
   <action name="actionHelp">
@@ -240,6 +241,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+V</string>
+   </property>
+  </action>
+  <action name="actionNew_table">
+   <property name="text">
+    <string>New table</string>
    </property>
   </action>
  </widget>

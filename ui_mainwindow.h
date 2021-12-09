@@ -31,12 +31,12 @@ class Ui_MainWindow
 {
 public:
     QAction *actionOpen;
-    QAction *actionCreate;
     QAction *actionHelp;
     QAction *actionAbout;
     QAction *actionCleanWorkArea;
     QAction *actionCleanInputField;
     QAction *actionCleanOutput;
+    QAction *actionNew_table;
     QWidget *centralwidget;
     QTableView *tableView;
     QProgressBar *progressBar;
@@ -51,6 +51,7 @@ public:
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuProcess;
+    QMenu *menuCreate;
     QMenu *menuInfo;
     QStatusBar *statusbar;
     QToolBar *toolBar;
@@ -62,8 +63,6 @@ public:
         MainWindow->resize(800, 600);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-        actionCreate = new QAction(MainWindow);
-        actionCreate->setObjectName(QString::fromUtf8("actionCreate"));
         actionHelp = new QAction(MainWindow);
         actionHelp->setObjectName(QString::fromUtf8("actionHelp"));
         actionAbout = new QAction(MainWindow);
@@ -83,6 +82,8 @@ public:
         QIcon icon2;
         icon2.addFile(QString::fromUtf8("../../Downloads/table_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionCleanOutput->setIcon(icon2);
+        actionNew_table = new QAction(MainWindow);
+        actionNew_table->setObjectName(QString::fromUtf8("actionNew_table"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tableView = new QTableView(centralwidget);
@@ -125,6 +126,8 @@ public:
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuProcess = new QMenu(menubar);
         menuProcess->setObjectName(QString::fromUtf8("menuProcess"));
+        menuCreate = new QMenu(menuProcess);
+        menuCreate->setObjectName(QString::fromUtf8("menuCreate"));
         menuInfo = new QMenu(menubar);
         menuInfo->setObjectName(QString::fromUtf8("menuInfo"));
         MainWindow->setMenuBar(menubar);
@@ -139,7 +142,8 @@ public:
         menubar->addAction(menuProcess->menuAction());
         menubar->addAction(menuInfo->menuAction());
         menuFile->addAction(actionOpen);
-        menuProcess->addAction(actionCreate);
+        menuProcess->addAction(menuCreate->menuAction());
+        menuCreate->addAction(actionNew_table);
         menuInfo->addAction(actionHelp);
         menuInfo->addAction(actionAbout);
         toolBar->addAction(actionCleanWorkArea);
@@ -155,7 +159,6 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
-        actionCreate->setText(QCoreApplication::translate("MainWindow", "Create", nullptr));
         actionHelp->setText(QCoreApplication::translate("MainWindow", "Help", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionCleanWorkArea->setText(QCoreApplication::translate("MainWindow", "CleanWorkArea", nullptr));
@@ -170,6 +173,7 @@ public:
 #if QT_CONFIG(shortcut)
         actionCleanOutput->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Shift+V", nullptr));
 #endif // QT_CONFIG(shortcut)
+        actionNew_table->setText(QCoreApplication::translate("MainWindow", "New table", nullptr));
         addRowButton->setText(QCoreApplication::translate("MainWindow", "Add Row", nullptr));
         deleteRowButton->setText(QCoreApplication::translate("MainWindow", "Delete Row", nullptr));
         submitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
@@ -178,6 +182,7 @@ public:
         deleteColumnButton->setText(QCoreApplication::translate("MainWindow", "Delete Column", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuProcess->setTitle(QCoreApplication::translate("MainWindow", "Process", nullptr));
+        menuCreate->setTitle(QCoreApplication::translate("MainWindow", "Create", nullptr));
         menuInfo->setTitle(QCoreApplication::translate("MainWindow", "Info", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi

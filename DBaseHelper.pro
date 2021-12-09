@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     about.cpp \
     createcolumnform.cpp \
+    createtablewindow.cpp \
     inputdbsettingswindow.cpp \
     main.cpp \
     mainwindow.cpp
@@ -18,12 +19,14 @@ SOURCES += \
 HEADERS += \
     about.h \
     createcolumnform.h \
+    createtablewindow.h \
     inputdbsettingswindow.h \
     mainwindow.h
 
 FORMS += \
     about.ui \
     createcolumnform.ui \
+    createtablewindow.ui \
     inputdbsettingswindow.ui \
     mainwindow.ui
 

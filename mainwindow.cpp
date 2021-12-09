@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent, QSqlDatabase connectedDb)
 {
     ui->setupUi(this);
 
-
+    db = connectedDb;
     model = new QSqlTableModel(this);
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     if (connectedDb.tables().count() > 0){
@@ -115,7 +115,11 @@ void MainWindow::on_actionCleanOutput_triggered()
 
 void MainWindow::on_addColumnButton_clicked()
 {
-    model->insertColumn(model->columnCount());
+    createColumnWindow = new CreateColumnForm(this, this->db, ui->comboBox->currentText(), model);
+    createColumnWindow->show();
+    model->setTable(ui->comboBox->currentText());
+    model->select();
+    ui->tableView->setModel(model);
 }
 
 
@@ -133,5 +137,14 @@ void MainWindow::on_deleteColumnButton_clicked()
     else{
         qDebug() << "No column select";
     }
+}
+
+
+void MainWindow::on_actionNew_table_triggered()
+{
+    createTableWindow = new CreateTableWindow(this, this->db);
+    createTableWindow->show();
+    ui->comboBox->clear();
+    ui->comboBox->addItems(db.tables());
 }
 
