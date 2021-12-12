@@ -5,6 +5,7 @@ CreateTableWindow::CreateTableWindow(QWidget *parent, QSqlDatabase connectedDb) 
     QDialog(parent),
     ui(new Ui::CreateTableWindow)
 {
+    db = connectedDb;
     ui->setupUi(this);
 }
 

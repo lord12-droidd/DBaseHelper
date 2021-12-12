@@ -7,8 +7,8 @@ about::about(QWidget *parent) :
     ui(new Ui::about)
 {
     ui->setupUi(this);
-    QPixmap pix("C:/Users/USER/Downloads/photo5395825396479538552.jpg");
-    ui->labelPicture->setPixmap(pix.scaled(200, 200, Qt::KeepAspectRatio));
+    QPixmap pix("C:/Users/USER/Documents/DBaseHelper/database_edit.png");
+    ui->labelPicture->setPixmap(pix.scaled(100, 100, Qt::KeepAspectRatio));
 }
 
 about::~about()

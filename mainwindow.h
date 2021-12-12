@@ -10,6 +10,9 @@
 #include "about.h"
 #include "createcolumnform.h"
 #include "createtablewindow.h"
+#include "helpwindow.h"
+#include "choosetablewindow.h"
+#include "errorwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,8 +36,6 @@ private slots:
 
     void on_deleteRowButton_clicked();
 
-    void on_comboBox_currentTextChanged(const QString &arg1);
-
     void on_executeQueryButton_clicked();
 
     void on_actionCleanInputField_triggered();
@@ -49,12 +50,19 @@ private slots:
 
     void on_actionNew_table_triggered();
 
+    void on_actionHelp_triggered();
+
+    void on_actionTable_triggered();
+
 private:
     Ui::MainWindow *ui;
     about *aboutWindow;
+    HelpWindow *helpWindow;
     CreateTableWindow *createTableWindow;
     CreateColumnForm *createColumnWindow;
     QSqlDatabase db;
     QSqlTableModel* model;
+    ChooseTableWindow *tableWindow;
+    ErrorWindow *errorWindow;
 };
 #endif // MAINWINDOW_H

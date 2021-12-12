@@ -1,18 +1,20 @@
 #include "createcolumnform.h"
 #include "ui_createcolumnform.h"
 
-CreateColumnForm::CreateColumnForm(QWidget *parent, QSqlDatabase connectedDb, QString openedTableName, QSqlTableModel *openedTable) :
+CreateColumnForm::CreateColumnForm(QWidget *parent, QSqlDatabase connectedDb, QSqlTableModel *openedTable, QTableView* tableView) :
     QDialog(parent),
     ui(new Ui::CreateColumnForm)
 {
+    db = connectedDb;
     ui->setupUi(this);
+    this->tableView = tableView;
     QStringList columnTypes =
     {
         "Integer",
         "VARCHAR",
         "SERIAL"
     };
-    this->openedTableName = openedTableName;
+    this->openedTable = openedTable;
     ui->dataTypesComboBox->addItems(columnTypes);
     ui->dataTypesComboBox->setCurrentText(columnTypes[0]);
 }
@@ -28,22 +30,25 @@ void CreateColumnForm::on_createColumnButton_clicked()
     QString columnName = ui->columnName->text();
     QSqlQuery query = QSqlQuery(db);
     if (ui->isPrimaryButton->isChecked()){
-        std::string str = "ALTER TABLE " + openedTableName.toStdString() + " ADD COLUMN" + " \"" + columnName.toStdString() + "\"" + columnType.toStdString() + " PRIMARY KEY";
+        std::string str = "ALTER TABLE \"" + openedTable->tableName().toStdString() + "\"" + " ADD COLUMN" + " \"" + columnName.toStdString() + "\"" + columnType.toStdString() + " PRIMARY KEY";
         query.exec(QString::fromStdString(str));
         qDebug() << QString::fromStdString(str);
+        tableView->setModel(openedTable);
         this->close();
         return;
     }
     if (ui->isNullableButton->isChecked()){
-        std::string str = "ALTER TABLE " + openedTableName.toStdString() + " ADD COLUMN" + " \"" + columnName.toStdString() + "\"" + columnType.toStdString();
+        std::string str = "ALTER TABLE \"" + openedTable->tableName().toStdString() + "\"" + " ADD COLUMN" + " \"" + columnName.toStdString() + "\"" + columnType.toStdString();
         query.exec(QString::fromStdString(str));
         qDebug() << QString::fromStdString(str);
+        tableView->setModel(openedTable);
         this->close();
         return;
     }
-    std::string str = "ALTER TABLE " + openedTableName.toStdString() + " ADD COLUMN" + " \"" + columnName.toStdString() + "\"" + columnType.toStdString() + " NOT NULL DEFAULT '1'";
+    std::string str = "ALTER TABLE \"" + openedTable->tableName().toStdString() + "\"" + " ADD COLUMN" + " \"" + columnName.toStdString() + "\"" + columnType.toStdString() + " NOT NULL DEFAULT '1'";
     query.exec(QString::fromStdString(str));
     qDebug() << QString::fromStdString(str);
+    tableView->setModel(openedTable);
     this->close();
 }
 

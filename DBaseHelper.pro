@@ -10,23 +10,32 @@ CONFIG += c++11
 
 SOURCES += \
     about.cpp \
+    choosetablewindow.cpp \
     createcolumnform.cpp \
     createtablewindow.cpp \
+    errorwindow.cpp \
+    helpwindow.cpp \
     inputdbsettingswindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     about.h \
+    choosetablewindow.h \
     createcolumnform.h \
     createtablewindow.h \
+    errorwindow.h \
+    helpwindow.h \
     inputdbsettingswindow.h \
     mainwindow.h
 
 FORMS += \
     about.ui \
+    choosetablewindow.ui \
     createcolumnform.ui \
     createtablewindow.ui \
+    errorwindow.ui \
+    helpwindow.ui \
     inputdbsettingswindow.ui \
     mainwindow.ui
 
@@ -34,3 +43,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    database_edit.png

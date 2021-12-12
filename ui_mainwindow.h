@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -30,26 +29,26 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionOpen;
     QAction *actionHelp;
     QAction *actionAbout;
     QAction *actionCleanWorkArea;
     QAction *actionCleanInputField;
     QAction *actionCleanOutput;
     QAction *actionNew_table;
+    QAction *actionTable;
     QWidget *centralwidget;
     QTableView *tableView;
     QProgressBar *progressBar;
     QPushButton *addRowButton;
     QPushButton *deleteRowButton;
     QPushButton *submitButton;
-    QComboBox *comboBox;
     QPushButton *executeQueryButton;
     QTextEdit *queryArea;
     QPushButton *addColumnButton;
     QPushButton *deleteColumnButton;
     QMenuBar *menubar;
     QMenu *menuFile;
+    QMenu *menuOpen;
     QMenu *menuProcess;
     QMenu *menuCreate;
     QMenu *menuInfo;
@@ -61,8 +60,6 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
-        actionOpen = new QAction(MainWindow);
-        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
         actionHelp = new QAction(MainWindow);
         actionHelp->setObjectName(QString::fromUtf8("actionHelp"));
         actionAbout = new QAction(MainWindow);
@@ -84,6 +81,8 @@ public:
         actionCleanOutput->setIcon(icon2);
         actionNew_table = new QAction(MainWindow);
         actionNew_table->setObjectName(QString::fromUtf8("actionNew_table"));
+        actionTable = new QAction(MainWindow);
+        actionTable->setObjectName(QString::fromUtf8("actionTable"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tableView = new QTableView(centralwidget);
@@ -103,9 +102,6 @@ public:
         submitButton = new QPushButton(centralwidget);
         submitButton->setObjectName(QString::fromUtf8("submitButton"));
         submitButton->setGeometry(QRect(560, 160, 151, 51));
-        comboBox = new QComboBox(centralwidget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(560, 280, 151, 41));
         executeQueryButton = new QPushButton(centralwidget);
         executeQueryButton->setObjectName(QString::fromUtf8("executeQueryButton"));
         executeQueryButton->setGeometry(QRect(590, 480, 121, 41));
@@ -124,6 +120,8 @@ public:
         menubar->setGeometry(QRect(0, 0, 800, 26));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuOpen = new QMenu(menuFile);
+        menuOpen->setObjectName(QString::fromUtf8("menuOpen"));
         menuProcess = new QMenu(menubar);
         menuProcess->setObjectName(QString::fromUtf8("menuProcess"));
         menuCreate = new QMenu(menuProcess);
@@ -141,7 +139,8 @@ public:
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuProcess->menuAction());
         menubar->addAction(menuInfo->menuAction());
-        menuFile->addAction(actionOpen);
+        menuFile->addAction(menuOpen->menuAction());
+        menuOpen->addAction(actionTable);
         menuProcess->addAction(menuCreate->menuAction());
         menuCreate->addAction(actionNew_table);
         menuInfo->addAction(actionHelp);
@@ -158,22 +157,31 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
         actionHelp->setText(QCoreApplication::translate("MainWindow", "Help", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionCleanWorkArea->setText(QCoreApplication::translate("MainWindow", "CleanWorkArea", nullptr));
+#if QT_CONFIG(tooltip)
+        actionCleanWorkArea->setToolTip(QCoreApplication::translate("MainWindow", "Clean Work Area (Ctrl+Shift+W)", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(shortcut)
         actionCleanWorkArea->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Shift+W", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionCleanInputField->setText(QCoreApplication::translate("MainWindow", "CleanInputField", nullptr));
+#if QT_CONFIG(tooltip)
+        actionCleanInputField->setToolTip(QCoreApplication::translate("MainWindow", "Clean Input Field (Ctrl+Shift+T)", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(shortcut)
         actionCleanInputField->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Shift+T", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionCleanOutput->setText(QCoreApplication::translate("MainWindow", "CleanOutput", nullptr));
+#if QT_CONFIG(tooltip)
+        actionCleanOutput->setToolTip(QCoreApplication::translate("MainWindow", "Clean Output (Ctrl+Shift+V)", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(shortcut)
         actionCleanOutput->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Shift+V", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionNew_table->setText(QCoreApplication::translate("MainWindow", "New table", nullptr));
+        actionTable->setText(QCoreApplication::translate("MainWindow", "Table", nullptr));
         addRowButton->setText(QCoreApplication::translate("MainWindow", "Add Row", nullptr));
         deleteRowButton->setText(QCoreApplication::translate("MainWindow", "Delete Row", nullptr));
         submitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
@@ -181,6 +189,7 @@ public:
         addColumnButton->setText(QCoreApplication::translate("MainWindow", "Add Column", nullptr));
         deleteColumnButton->setText(QCoreApplication::translate("MainWindow", "Delete Column", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
+        menuOpen->setTitle(QCoreApplication::translate("MainWindow", "Open", nullptr));
         menuProcess->setTitle(QCoreApplication::translate("MainWindow", "Process", nullptr));
         menuCreate->setTitle(QCoreApplication::translate("MainWindow", "Create", nullptr));
         menuInfo->setTitle(QCoreApplication::translate("MainWindow", "Info", nullptr));

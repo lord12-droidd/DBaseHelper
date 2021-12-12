@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent, QSqlDatabase connectedDb)
     }
     model->select();
     ui->tableView->setModel(model);
-    ui->comboBox->addItems(connectedDb.tables());
 }
 
 MainWindow::~MainWindow()
@@ -39,14 +38,18 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::on_submitButton_clicked()
 {
     QSqlQuery query = QSqlQuery(db);
-    if (!query.exec("select * from testtable")){
-        qDebug() << query.lastError().databaseText();
-        qDebug() << query.lastError().driverText();
-    }
-    while(query.next()){
-        qDebug() << query.record();
-    }
-    model->submitAll();
+        std::string str = "select * from \"" + model->tableName().toStdString() + "\"";
+        if (!query.exec(QString::fromStdString(str))){
+            qDebug() << query.lastError().databaseText();
+            qDebug() << query.lastError().driverText();
+        }
+        while(query.next()){
+            qDebug() << query.record();
+        }
+        model->submitAll();
+        ui->progressBar->setValue(100);
+        std::this_thread::sleep_for (std::chrono::milliseconds(100));
+        ui->progressBar->setValue(0);
 }
 
 
@@ -65,15 +68,6 @@ void MainWindow::on_deleteRowButton_clicked()
     else{
         qDebug() << "No row select";
     }
-}
-
-
-
-void MainWindow::on_comboBox_currentTextChanged(const QString &arg1)
-{
-    model->setTable(arg1);
-    model->select();
-    ui->tableView->setModel(model);
 }
 
 
@@ -115,9 +109,10 @@ void MainWindow::on_actionCleanOutput_triggered()
 
 void MainWindow::on_addColumnButton_clicked()
 {
-    createColumnWindow = new CreateColumnForm(this, this->db, ui->comboBox->currentText(), model);
+    createColumnWindow = new CreateColumnForm(this, this->db, model, ui->tableView);
+    createColumnWindow->setModal(true);
     createColumnWindow->show();
-    model->setTable(ui->comboBox->currentText());
+    model->setTable(model->tableName());
     model->select();
     ui->tableView->setModel(model);
 }
@@ -143,8 +138,23 @@ void MainWindow::on_deleteColumnButton_clicked()
 void MainWindow::on_actionNew_table_triggered()
 {
     createTableWindow = new CreateTableWindow(this, this->db);
+    createTableWindow->setModal(true);
     createTableWindow->show();
-    ui->comboBox->clear();
-    ui->comboBox->addItems(db.tables());
+}
+
+
+void MainWindow::on_actionHelp_triggered()
+{
+    helpWindow = new HelpWindow(this);
+    helpWindow->setModal(true);
+    helpWindow->show();
+}
+
+
+void MainWindow::on_actionTable_triggered()
+{
+    tableWindow = new ChooseTableWindow(this, model, db, ui->tableView);
+    tableWindow->setModal(true);
+    tableWindow->show();
 }
 

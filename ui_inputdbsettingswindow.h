@@ -57,6 +57,7 @@ public:
         passwordLine = new QLineEdit(centralwidget);
         passwordLine->setObjectName(QString::fromUtf8("passwordLine"));
         passwordLine->setGeometry(QRect(300, 380, 171, 31));
+        passwordLine->setEchoMode(QLineEdit::Password);
         welcomeLabel = new QLabel(centralwidget);
         welcomeLabel->setObjectName(QString::fromUtf8("welcomeLabel"));
         welcomeLabel->setGeometry(QRect(200, 60, 371, 51));

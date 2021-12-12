@@ -79,16 +79,6 @@
      <string>Submit</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>280</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="executeQueryButton">
     <property name="geometry">
      <rect>
@@ -152,7 +142,13 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen"/>
+    <widget class="QMenu" name="menuOpen">
+     <property name="title">
+      <string>Open</string>
+     </property>
+     <addaction name="actionTable"/>
+    </widget>
+    <addaction name="menuOpen"/>
    </widget>
    <widget class="QMenu" name="menuProcess">
     <property name="title">
@@ -192,11 +188,6 @@
    <addaction name="actionCleanInputField"/>
    <addaction name="actionCleanOutput"/>
   </widget>
-  <action name="actionOpen">
-   <property name="text">
-    <string>Open</string>
-   </property>
-  </action>
   <action name="actionHelp">
    <property name="text">
     <string>Help</string>
@@ -215,6 +206,9 @@
    <property name="text">
     <string>CleanWorkArea</string>
    </property>
+   <property name="toolTip">
+    <string>Clean Work Area (Ctrl+Shift+W)</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Shift+W</string>
    </property>
@@ -226,6 +220,9 @@
    </property>
    <property name="text">
     <string>CleanInputField</string>
+   </property>
+   <property name="toolTip">
+    <string>Clean Input Field (Ctrl+Shift+T)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+T</string>
@@ -239,6 +236,9 @@
    <property name="text">
     <string>CleanOutput</string>
    </property>
+   <property name="toolTip">
+    <string>Clean Output (Ctrl+Shift+V)</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Shift+V</string>
    </property>
@@ -246,6 +246,11 @@
   <action name="actionNew_table">
    <property name="text">
     <string>New table</string>
+   </property>
+  </action>
+  <action name="actionTable">
+   <property name="text">
+    <string>Table</string>
    </property>
   </action>
  </widget>

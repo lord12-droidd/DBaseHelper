@@ -25,7 +25,16 @@ void InputDBSettingsWindow::on_submitConnectionSettingsBtn_clicked()
     db.setDatabaseName(ui->dbLine->text());
     db.setUserName(ui->userNameLine->text());
     db.setPassword(ui->passwordLine->text());
-    if (!db.open()){
+    if (ui->dbLine->text() == ""){
+        ErrorWindow* errWindow = new ErrorWindow(nullptr, "Please input database name");
+        errWindow->setModal(true);
+        errWindow->show();
+    }
+    else if (!db.open()){
+        QString message = db.lastError().text();
+        ErrorWindow* errWindow = new ErrorWindow(nullptr, message);
+        errWindow->setModal(true);
+        errWindow->show();
         qDebug() << db.lastError().text();
     }
     else {
