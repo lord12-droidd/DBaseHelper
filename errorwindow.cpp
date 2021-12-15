@@ -13,3 +13,9 @@ ErrorWindow::~ErrorWindow()
 {
     delete ui;
 }
+
+void ErrorWindow::on_closeButton_clicked()
+{
+    this->close();
+}
+

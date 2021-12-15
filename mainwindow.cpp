@@ -55,6 +55,12 @@ void MainWindow::on_submitButton_clicked()
 
 void MainWindow::on_addRowButton_clicked()
 {
+    if(model->columnCount() == 0){
+        ErrorWindow* errWindow = new ErrorWindow(nullptr, "You should add column first");
+        errWindow->setModal(true);
+        errWindow->show();
+        return;
+    }
     qDebug() << "inserting row" << model->insertRow(model->rowCount());
 }
 
@@ -77,8 +83,10 @@ void MainWindow::on_executeQueryButton_clicked()
     QString queryText(ui->queryArea->toPlainText());
 
     if (!query.exec(queryText)){
-        qDebug() << query.lastError().databaseText();
-        qDebug() << query.lastError().driverText();
+        ErrorWindow* errWindow = new ErrorWindow(nullptr, query.lastError().databaseText());
+        errWindow->setModal(true);
+        errWindow->show();
+        return;
     }
     QSqlQueryModel *setquery1 = new QSqlQueryModel;
     setquery1->setQuery(queryText);

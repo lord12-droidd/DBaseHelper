@@ -45,4 +45,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    database_edit.png
+    application_delete.png \
+    database_edit.png \
+    icon.png \
+    table_delete.png \
+    textfield_delete.png

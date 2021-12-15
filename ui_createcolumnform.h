@@ -61,7 +61,7 @@ public:
 
     void retranslateUi(QDialog *CreateColumnForm)
     {
-        CreateColumnForm->setWindowTitle(QCoreApplication::translate("CreateColumnForm", "Dialog", nullptr));
+        CreateColumnForm->setWindowTitle(QCoreApplication::translate("CreateColumnForm", "Create Column", nullptr));
         createColumnButton->setText(QCoreApplication::translate("CreateColumnForm", "Create", nullptr));
         columnNameLabel->setText(QCoreApplication::translate("CreateColumnForm", "Column Name", nullptr));
         isPrimaryButton->setText(QCoreApplication::translate("CreateColumnForm", "Primary Key", nullptr));

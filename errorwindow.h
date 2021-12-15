@@ -15,6 +15,9 @@ public:
     explicit ErrorWindow(QWidget *parent = nullptr, QString errorMessage = nullptr);
     ~ErrorWindow();
 
+private slots:
+    void on_closeButton_clicked();
+
 private:
     Ui::ErrorWindow *ui;
 };

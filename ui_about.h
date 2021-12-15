@@ -60,7 +60,7 @@ public:
 
     void retranslateUi(QDialog *about)
     {
-        about->setWindowTitle(QCoreApplication::translate("about", "Dialog", nullptr));
+        about->setWindowTitle(QCoreApplication::translate("about", "About", nullptr));
         labelFullName->setText(QCoreApplication::translate("about", "DBaseHelper", nullptr));
         labelPicture->setText(QString());
         labelDescription->setText(QCoreApplication::translate("about", "\320\232\320\243\320\240\320\241\320\220\320\247 \320\222 \320\231\320\236\320\221\320\220\320\235\320\230\320\231 \320\222\320\235\320\242\320\243 \320\221\320\233\320\257\320\242\320\254 \320\241\320\220\320\234\320\220 \320\237\320\206\320\227\320\224\320\220\320\242\320\220 \320\237\320\240\320\236\320\223\320\220, \320\257 \320\220\320\242\320\222\320\206\320\247\320\220\320\256, \320\237\320\236\320\241\320\242\320\220\320\222\320\242\320\225 5 \320\206\320\235\320\220\320\247\320\225 \320\232\320\243\320\233\320\225\320\221\320\257\320\232\320\220 \320\221\320\233\320\247\320\242\320\254", nullptr));

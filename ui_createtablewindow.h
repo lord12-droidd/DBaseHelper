@@ -47,7 +47,7 @@ public:
 
     void retranslateUi(QDialog *CreateTableWindow)
     {
-        CreateTableWindow->setWindowTitle(QCoreApplication::translate("CreateTableWindow", "Dialog", nullptr));
+        CreateTableWindow->setWindowTitle(QCoreApplication::translate("CreateTableWindow", "Create Table ", nullptr));
         createTableButton->setText(QCoreApplication::translate("CreateTableWindow", "Create", nullptr));
         tableNameLabel->setText(QCoreApplication::translate("CreateTableWindow", "Table Name", nullptr));
     } // retranslateUi

@@ -42,7 +42,7 @@ public:
 
     void retranslateUi(QDialog *ChooseTableWindow)
     {
-        ChooseTableWindow->setWindowTitle(QCoreApplication::translate("ChooseTableWindow", "Dialog", nullptr));
+        ChooseTableWindow->setWindowTitle(QCoreApplication::translate("ChooseTableWindow", "Choose Table", nullptr));
         openTableButton->setText(QCoreApplication::translate("ChooseTableWindow", "Open", nullptr));
     } // retranslateUi
 

@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -20,6 +21,7 @@ class Ui_ErrorWindow
 {
 public:
     QLabel *errorDescription;
+    QPushButton *closeButton;
 
     void setupUi(QDialog *ErrorWindow)
     {
@@ -28,12 +30,15 @@ public:
         ErrorWindow->resize(400, 300);
         errorDescription = new QLabel(ErrorWindow);
         errorDescription->setObjectName(QString::fromUtf8("errorDescription"));
-        errorDescription->setGeometry(QRect(40, 50, 331, 221));
+        errorDescription->setGeometry(QRect(40, 10, 331, 221));
         QFont font;
         font.setPointSize(10);
         errorDescription->setFont(font);
         errorDescription->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         errorDescription->setWordWrap(true);
+        closeButton = new QPushButton(ErrorWindow);
+        closeButton->setObjectName(QString::fromUtf8("closeButton"));
+        closeButton->setGeometry(QRect(160, 250, 93, 28));
 
         retranslateUi(ErrorWindow);
 
@@ -42,8 +47,9 @@ public:
 
     void retranslateUi(QDialog *ErrorWindow)
     {
-        ErrorWindow->setWindowTitle(QCoreApplication::translate("ErrorWindow", "Dialog", nullptr));
+        ErrorWindow->setWindowTitle(QCoreApplication::translate("ErrorWindow", "Error Message", nullptr));
         errorDescription->setText(QString());
+        closeButton->setText(QCoreApplication::translate("ErrorWindow", "Ok", nullptr));
     } // retranslateUi
 
 };

@@ -67,17 +67,17 @@ public:
         actionCleanWorkArea = new QAction(MainWindow);
         actionCleanWorkArea->setObjectName(QString::fromUtf8("actionCleanWorkArea"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8("../../Downloads/application_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("application_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionCleanWorkArea->setIcon(icon);
         actionCleanInputField = new QAction(MainWindow);
         actionCleanInputField->setObjectName(QString::fromUtf8("actionCleanInputField"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8("../../Downloads/textfield_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8("textfield_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionCleanInputField->setIcon(icon1);
         actionCleanOutput = new QAction(MainWindow);
         actionCleanOutput->setObjectName(QString::fromUtf8("actionCleanOutput"));
         QIcon icon2;
-        icon2.addFile(QString::fromUtf8("../../Downloads/table_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString::fromUtf8("table_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionCleanOutput->setIcon(icon2);
         actionNew_table = new QAction(MainWindow);
         actionNew_table->setObjectName(QString::fromUtf8("actionNew_table"));
@@ -156,7 +156,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "DBaseHelper", nullptr));
         actionHelp->setText(QCoreApplication::translate("MainWindow", "Help", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionCleanWorkArea->setText(QCoreApplication::translate("MainWindow", "CleanWorkArea", nullptr));

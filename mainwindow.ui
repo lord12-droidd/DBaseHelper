@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>DBaseHelper</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableView" name="tableView">
@@ -201,7 +201,7 @@
   <action name="actionCleanWorkArea">
    <property name="icon">
     <iconset>
-     <normaloff>../../Downloads/application_delete.png</normaloff>../../Downloads/application_delete.png</iconset>
+     <normaloff>application_delete.png</normaloff>application_delete.png</iconset>
    </property>
    <property name="text">
     <string>CleanWorkArea</string>
@@ -216,7 +216,7 @@
   <action name="actionCleanInputField">
    <property name="icon">
     <iconset>
-     <normaloff>../../Downloads/textfield_delete.png</normaloff>../../Downloads/textfield_delete.png</iconset>
+     <normaloff>textfield_delete.png</normaloff>textfield_delete.png</iconset>
    </property>
    <property name="text">
     <string>CleanInputField</string>
@@ -231,7 +231,7 @@
   <action name="actionCleanOutput">
    <property name="icon">
     <iconset>
-     <normaloff>../../Downloads/table_delete.png</normaloff>../../Downloads/table_delete.png</iconset>
+     <normaloff>table_delete.png</normaloff>table_delete.png</iconset>
    </property>
    <property name="text">
     <string>CleanOutput</string>

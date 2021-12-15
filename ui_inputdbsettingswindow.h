@@ -100,7 +100,7 @@ public:
 
     void retranslateUi(QMainWindow *InputDBSettingsWindow)
     {
-        InputDBSettingsWindow->setWindowTitle(QCoreApplication::translate("InputDBSettingsWindow", "MainWindow", nullptr));
+        InputDBSettingsWindow->setWindowTitle(QCoreApplication::translate("InputDBSettingsWindow", "Database Connection", nullptr));
         welcomeLabel->setText(QCoreApplication::translate("InputDBSettingsWindow", "DBaseHelper", nullptr));
         hostNamelabel->setText(QCoreApplication::translate("InputDBSettingsWindow", "Host", nullptr));
         dbNameLabel->setText(QCoreApplication::translate("InputDBSettingsWindow", "Database Name", nullptr));
