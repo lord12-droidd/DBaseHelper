@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "inputdbsettingswindow.h"
 #include <QDebug>
 #include <QtCore>
 #include <QtGui>
@@ -164,5 +165,14 @@ void MainWindow::on_actionTable_triggered()
     tableWindow = new ChooseTableWindow(this, model, db, ui->tableView);
     tableWindow->setModal(true);
     tableWindow->show();
+}
+
+
+void MainWindow::on_actionDatabase_triggered()
+{
+    db.close();
+    this->close();
+    InputDBSettingsWindow* w = new InputDBSettingsWindow();
+    w->show();
 }
 

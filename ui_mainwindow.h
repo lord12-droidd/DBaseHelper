@@ -36,6 +36,7 @@ public:
     QAction *actionCleanOutput;
     QAction *actionNew_table;
     QAction *actionTable;
+    QAction *actionDatabase;
     QWidget *centralwidget;
     QTableView *tableView;
     QProgressBar *progressBar;
@@ -83,6 +84,8 @@ public:
         actionNew_table->setObjectName(QString::fromUtf8("actionNew_table"));
         actionTable = new QAction(MainWindow);
         actionTable->setObjectName(QString::fromUtf8("actionTable"));
+        actionDatabase = new QAction(MainWindow);
+        actionDatabase->setObjectName(QString::fromUtf8("actionDatabase"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tableView = new QTableView(centralwidget);
@@ -141,6 +144,7 @@ public:
         menubar->addAction(menuInfo->menuAction());
         menuFile->addAction(menuOpen->menuAction());
         menuOpen->addAction(actionTable);
+        menuOpen->addAction(actionDatabase);
         menuProcess->addAction(menuCreate->menuAction());
         menuCreate->addAction(actionNew_table);
         menuInfo->addAction(actionHelp);
@@ -182,6 +186,7 @@ public:
 #endif // QT_CONFIG(shortcut)
         actionNew_table->setText(QCoreApplication::translate("MainWindow", "New table", nullptr));
         actionTable->setText(QCoreApplication::translate("MainWindow", "Table", nullptr));
+        actionDatabase->setText(QCoreApplication::translate("MainWindow", "Database", nullptr));
         addRowButton->setText(QCoreApplication::translate("MainWindow", "Add Row", nullptr));
         deleteRowButton->setText(QCoreApplication::translate("MainWindow", "Delete Row", nullptr));
         submitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));

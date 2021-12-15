@@ -54,6 +54,8 @@ private slots:
 
     void on_actionTable_triggered();
 
+    void on_actionDatabase_triggered();
+
 private:
     Ui::MainWindow *ui;
     about *aboutWindow;

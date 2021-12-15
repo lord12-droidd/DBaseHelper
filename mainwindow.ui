@@ -147,6 +147,7 @@
       <string>Open</string>
      </property>
      <addaction name="actionTable"/>
+     <addaction name="actionDatabase"/>
     </widget>
     <addaction name="menuOpen"/>
    </widget>
@@ -251,6 +252,11 @@
   <action name="actionTable">
    <property name="text">
     <string>Table</string>
+   </property>
+  </action>
+  <action name="actionDatabase">
+   <property name="text">
+    <string>Database</string>
    </property>
   </action>
  </widget>
