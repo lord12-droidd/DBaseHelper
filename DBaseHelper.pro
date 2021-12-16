@@ -12,6 +12,7 @@ SOURCES += \
     about.cpp \
     choosetablewindow.cpp \
     createcolumnform.cpp \
+    createnewdbwindow.cpp \
     createtablewindow.cpp \
     errorwindow.cpp \
     helpwindow.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     about.h \
     choosetablewindow.h \
     createcolumnform.h \
+    createnewdbwindow.h \
     createtablewindow.h \
     errorwindow.h \
     helpwindow.h \
@@ -33,6 +35,7 @@ FORMS += \
     about.ui \
     choosetablewindow.ui \
     createcolumnform.ui \
+    createnewdbwindow.ui \
     createtablewindow.ui \
     errorwindow.ui \
     helpwindow.ui \

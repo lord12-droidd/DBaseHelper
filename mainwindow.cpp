@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent, QSqlDatabase connectedDb)
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     if (connectedDb.tables().count() > 0){
             model->setTable(connectedDb.tables()[0]);
+            ui->openedTablelabel->setText(model->tableName());
     }
     model->select();
     ui->tableView->setModel(model);
@@ -48,9 +49,6 @@ void MainWindow::on_submitButton_clicked()
             qDebug() << query.record();
         }
         model->submitAll();
-        ui->progressBar->setValue(100);
-        std::this_thread::sleep_for (std::chrono::milliseconds(100));
-        ui->progressBar->setValue(0);
 }
 
 
@@ -94,6 +92,7 @@ void MainWindow::on_executeQueryButton_clicked()
     QTableView *tv = new QTableView(this);
     tv->setModel(setquery1);
     ui->tableView->setModel(setquery1);
+    StartProgressBar();
 }
 
 
@@ -137,6 +136,7 @@ void MainWindow::on_deleteColumnButton_clicked()
         qDebug() << "Deleting column:" << model->removeColumn(selectedColumn);
         qDebug() << QString::fromStdString(str);
         query.exec(QString::fromStdString(str));
+        StartProgressBar();
     }
     else{
         qDebug() << "No column select";
@@ -162,7 +162,7 @@ void MainWindow::on_actionHelp_triggered()
 
 void MainWindow::on_actionTable_triggered()
 {
-    tableWindow = new ChooseTableWindow(this, model, db, ui->tableView);
+    tableWindow = new ChooseTableWindow(this, model, db, ui->tableView, ui->openedTablelabel);
     tableWindow->setModal(true);
     tableWindow->show();
 }
@@ -174,5 +174,20 @@ void MainWindow::on_actionDatabase_triggered()
     this->close();
     InputDBSettingsWindow* w = new InputDBSettingsWindow();
     w->show();
+}
+
+
+void MainWindow::on_actionNew_Database_triggered()
+{
+
+    createDbWindow = new CreateNewDbWindow(this, this->db);
+    createDbWindow->setModal(true);
+    createDbWindow->show();
+}
+
+void MainWindow::StartProgressBar(){
+    ui->progressBar->setValue(100);
+    std::this_thread::sleep_for (std::chrono::milliseconds(100));
+    ui->progressBar->setValue(0);
 }
 

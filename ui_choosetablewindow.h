@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,7 @@ class Ui_ChooseTableWindow
 public:
     QComboBox *comboBox;
     QPushButton *openTableButton;
+    QLabel *tableLabel;
 
     void setupUi(QDialog *ChooseTableWindow)
     {
@@ -33,7 +35,10 @@ public:
         comboBox->setGeometry(QRect(120, 140, 151, 41));
         openTableButton = new QPushButton(ChooseTableWindow);
         openTableButton->setObjectName(QString::fromUtf8("openTableButton"));
-        openTableButton->setGeometry(QRect(150, 230, 93, 28));
+        openTableButton->setGeometry(QRect(150, 220, 93, 28));
+        tableLabel = new QLabel(ChooseTableWindow);
+        tableLabel->setObjectName(QString::fromUtf8("tableLabel"));
+        tableLabel->setGeometry(QRect(160, 90, 81, 16));
 
         retranslateUi(ChooseTableWindow);
 
@@ -44,6 +49,7 @@ public:
     {
         ChooseTableWindow->setWindowTitle(QCoreApplication::translate("ChooseTableWindow", "Choose Table", nullptr));
         openTableButton->setText(QCoreApplication::translate("ChooseTableWindow", "Open", nullptr));
+        tableLabel->setText(QCoreApplication::translate("ChooseTableWindow", "Choose Table", nullptr));
     } // retranslateUi
 
 };

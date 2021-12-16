@@ -13,6 +13,7 @@
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -37,6 +38,7 @@ public:
     QAction *actionNew_table;
     QAction *actionTable;
     QAction *actionDatabase;
+    QAction *actionNew_Database;
     QWidget *centralwidget;
     QTableView *tableView;
     QProgressBar *progressBar;
@@ -47,6 +49,8 @@ public:
     QTextEdit *queryArea;
     QPushButton *addColumnButton;
     QPushButton *deleteColumnButton;
+    QLabel *tableLabel;
+    QLabel *openedTablelabel;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuOpen;
@@ -86,6 +90,8 @@ public:
         actionTable->setObjectName(QString::fromUtf8("actionTable"));
         actionDatabase = new QAction(MainWindow);
         actionDatabase->setObjectName(QString::fromUtf8("actionDatabase"));
+        actionNew_Database = new QAction(MainWindow);
+        actionNew_Database->setObjectName(QString::fromUtf8("actionNew_Database"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tableView = new QTableView(centralwidget);
@@ -98,25 +104,37 @@ public:
         progressBar->setOrientation(Qt::Horizontal);
         addRowButton = new QPushButton(centralwidget);
         addRowButton->setObjectName(QString::fromUtf8("addRowButton"));
-        addRowButton->setGeometry(QRect(490, 20, 151, 51));
+        addRowButton->setGeometry(QRect(490, 130, 151, 51));
         deleteRowButton = new QPushButton(centralwidget);
         deleteRowButton->setObjectName(QString::fromUtf8("deleteRowButton"));
-        deleteRowButton->setGeometry(QRect(490, 80, 151, 51));
+        deleteRowButton->setGeometry(QRect(490, 190, 151, 51));
         submitButton = new QPushButton(centralwidget);
         submitButton->setObjectName(QString::fromUtf8("submitButton"));
-        submitButton->setGeometry(QRect(560, 160, 151, 51));
+        submitButton->setGeometry(QRect(560, 270, 151, 51));
         executeQueryButton = new QPushButton(centralwidget);
         executeQueryButton->setObjectName(QString::fromUtf8("executeQueryButton"));
-        executeQueryButton->setGeometry(QRect(590, 480, 121, 41));
+        executeQueryButton->setGeometry(QRect(570, 480, 121, 41));
         queryArea = new QTextEdit(centralwidget);
         queryArea->setObjectName(QString::fromUtf8("queryArea"));
-        queryArea->setGeometry(QRect(520, 360, 251, 101));
+        queryArea->setGeometry(QRect(510, 360, 251, 101));
         addColumnButton = new QPushButton(centralwidget);
         addColumnButton->setObjectName(QString::fromUtf8("addColumnButton"));
-        addColumnButton->setGeometry(QRect(640, 20, 151, 51));
+        addColumnButton->setGeometry(QRect(640, 130, 151, 51));
         deleteColumnButton = new QPushButton(centralwidget);
         deleteColumnButton->setObjectName(QString::fromUtf8("deleteColumnButton"));
-        deleteColumnButton->setGeometry(QRect(640, 80, 151, 51));
+        deleteColumnButton->setGeometry(QRect(640, 190, 151, 51));
+        tableLabel = new QLabel(centralwidget);
+        tableLabel->setObjectName(QString::fromUtf8("tableLabel"));
+        tableLabel->setGeometry(QRect(560, 30, 161, 31));
+        QFont font;
+        font.setPointSize(14);
+        tableLabel->setFont(font);
+        tableLabel->setAlignment(Qt::AlignCenter);
+        openedTablelabel = new QLabel(centralwidget);
+        openedTablelabel->setObjectName(QString::fromUtf8("openedTablelabel"));
+        openedTablelabel->setGeometry(QRect(500, 70, 281, 31));
+        openedTablelabel->setFont(font);
+        openedTablelabel->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -147,6 +165,7 @@ public:
         menuOpen->addAction(actionDatabase);
         menuProcess->addAction(menuCreate->menuAction());
         menuCreate->addAction(actionNew_table);
+        menuCreate->addAction(actionNew_Database);
         menuInfo->addAction(actionHelp);
         menuInfo->addAction(actionAbout);
         toolBar->addAction(actionCleanWorkArea);
@@ -185,14 +204,29 @@ public:
         actionCleanOutput->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Shift+V", nullptr));
 #endif // QT_CONFIG(shortcut)
         actionNew_table->setText(QCoreApplication::translate("MainWindow", "New table", nullptr));
+#if QT_CONFIG(shortcut)
+        actionNew_table->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+C, Ctrl+T", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionTable->setText(QCoreApplication::translate("MainWindow", "Table", nullptr));
+#if QT_CONFIG(shortcut)
+        actionTable->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+O, Ctrl+T", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionDatabase->setText(QCoreApplication::translate("MainWindow", "Database", nullptr));
+#if QT_CONFIG(shortcut)
+        actionDatabase->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+O, Ctrl+D", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionNew_Database->setText(QCoreApplication::translate("MainWindow", "New Database", nullptr));
+#if QT_CONFIG(shortcut)
+        actionNew_Database->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+C, Ctrl+D", nullptr));
+#endif // QT_CONFIG(shortcut)
         addRowButton->setText(QCoreApplication::translate("MainWindow", "Add Row", nullptr));
         deleteRowButton->setText(QCoreApplication::translate("MainWindow", "Delete Row", nullptr));
         submitButton->setText(QCoreApplication::translate("MainWindow", "Submit", nullptr));
         executeQueryButton->setText(QCoreApplication::translate("MainWindow", "Execute", nullptr));
         addColumnButton->setText(QCoreApplication::translate("MainWindow", "Add Column", nullptr));
         deleteColumnButton->setText(QCoreApplication::translate("MainWindow", "Delete Column", nullptr));
+        tableLabel->setText(QCoreApplication::translate("MainWindow", "Opened Table:", nullptr));
+        openedTablelabel->setText(QString());
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuOpen->setTitle(QCoreApplication::translate("MainWindow", "Open", nullptr));
         menuProcess->setTitle(QCoreApplication::translate("MainWindow", "Process", nullptr));

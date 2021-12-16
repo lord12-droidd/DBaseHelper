@@ -13,6 +13,7 @@
 #include "helpwindow.h"
 #include "choosetablewindow.h"
 #include "errorwindow.h"
+#include "createnewdbwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -56,11 +57,16 @@ private slots:
 
     void on_actionDatabase_triggered();
 
+    void on_actionNew_Database_triggered();
+
+    void StartProgressBar();
+
 private:
     Ui::MainWindow *ui;
     about *aboutWindow;
     HelpWindow *helpWindow;
     CreateTableWindow *createTableWindow;
+    CreateNewDbWindow *createDbWindow;
     CreateColumnForm *createColumnWindow;
     QSqlDatabase db;
     QSqlTableModel* model;

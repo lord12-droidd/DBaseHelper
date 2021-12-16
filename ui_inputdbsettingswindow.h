@@ -84,6 +84,7 @@ public:
         submitConnectionSettingsBtn = new QPushButton(centralwidget);
         submitConnectionSettingsBtn->setObjectName(QString::fromUtf8("submitConnectionSettingsBtn"));
         submitConnectionSettingsBtn->setGeometry(QRect(330, 440, 121, 41));
+        submitConnectionSettingsBtn->setAutoDefault(true);
         InputDBSettingsWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(InputDBSettingsWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -94,6 +95,9 @@ public:
         InputDBSettingsWindow->setMenuBar(menubar);
 
         retranslateUi(InputDBSettingsWindow);
+
+        submitConnectionSettingsBtn->setDefault(true);
+
 
         QMetaObject::connectSlotsByName(InputDBSettingsWindow);
     } // setupUi

@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>20</y>
+      <y>130</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>80</y>
+      <y>190</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -70,7 +70,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>160</y>
+      <y>270</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -82,7 +82,7 @@
    <widget class="QPushButton" name="executeQueryButton">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>570</x>
       <y>480</y>
       <width>121</width>
       <height>41</height>
@@ -95,7 +95,7 @@
    <widget class="QTextEdit" name="queryArea">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>510</x>
       <y>360</y>
       <width>251</width>
       <height>101</height>
@@ -106,7 +106,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>20</y>
+      <y>130</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -119,13 +119,55 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>80</y>
+      <y>190</y>
       <width>151</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Delete Column</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tableLabel">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>30</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Opened Table:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="openedTablelabel">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>70</y>
+      <width>281</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -160,6 +202,7 @@
       <string>Create</string>
      </property>
      <addaction name="actionNew_table"/>
+     <addaction name="actionNew_Database"/>
     </widget>
     <addaction name="menuCreate"/>
    </widget>
@@ -248,15 +291,32 @@
    <property name="text">
     <string>New table</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+C, Ctrl+T</string>
+   </property>
   </action>
   <action name="actionTable">
    <property name="text">
     <string>Table</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O, Ctrl+T</string>
+   </property>
   </action>
   <action name="actionDatabase">
    <property name="text">
     <string>Database</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O, Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionNew_Database">
+   <property name="text">
+    <string>New Database</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C, Ctrl+D</string>
    </property>
   </action>
  </widget>

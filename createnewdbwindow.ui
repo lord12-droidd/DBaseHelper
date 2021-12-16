@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ChooseTableWindow</class>
- <widget class="QDialog" name="ChooseTableWindow">
+ <class>CreateNewDbWindow</class>
+ <widget class="QDialog" name="CreateNewDbWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,42 +11,42 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Choose Table</string>
+   <string>Dialog</string>
   </property>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QLabel" name="tableNameLabel">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>140</y>
-     <width>151</width>
-     <height>41</height>
+     <x>100</x>
+     <y>100</y>
+     <width>91</width>
+     <height>16</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Database Name</string>
+   </property>
   </widget>
-  <widget class="QPushButton" name="openTableButton">
+  <widget class="QPushButton" name="createDbButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>220</y>
+     <x>160</x>
+     <y>210</y>
      <width>93</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>Open</string>
+    <string>Create</string>
    </property>
   </widget>
-  <widget class="QLabel" name="tableLabel">
+  <widget class="QLineEdit" name="dbNameInput">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>90</y>
-     <width>81</width>
-     <height>16</height>
+     <x>200</x>
+     <y>100</y>
+     <width>113</width>
+     <height>22</height>
     </rect>
-   </property>
-   <property name="text">
-    <string>Choose Table</string>
    </property>
   </widget>
  </widget>

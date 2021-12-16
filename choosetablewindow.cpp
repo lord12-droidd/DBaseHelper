@@ -1,7 +1,7 @@
 #include "choosetablewindow.h"
 #include "ui_choosetablewindow.h"
 
-ChooseTableWindow::ChooseTableWindow(QWidget *parent, QSqlTableModel* model, QSqlDatabase connectedDb, QTableView* view) :
+ChooseTableWindow::ChooseTableWindow(QWidget *parent, QSqlTableModel* model, QSqlDatabase connectedDb, QTableView* view, QLabel* mainTableLable) :
     QDialog(parent),
     ui(new Ui::ChooseTableWindow)
 {
@@ -10,6 +10,7 @@ ChooseTableWindow::ChooseTableWindow(QWidget *parent, QSqlTableModel* model, QSq
     this->model = model;
     ui->comboBox->addItems(connectedDb.tables());
     this->tableView = view;
+    this->mainTableLable = mainTableLable;
 }
 
 ChooseTableWindow::~ChooseTableWindow()
@@ -26,6 +27,7 @@ void ChooseTableWindow::on_openTableButton_clicked()
     model->setTable(tableName);
     model->select();
     this->tableView->setModel(model);
+    this->mainTableLable->setText(model->tableName());
     this->close();
 }
 
